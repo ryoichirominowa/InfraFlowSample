@@ -156,10 +156,10 @@ const Canvas8 = () => {
   const handleShapeClick = (shape: any) => {
     setSelectedShape(shape);
   };
-  const handleLinkClick = (line: any) => {
-    const newLines = lines.filter((s) => s.id !== line.id);
-    setLines(newLines);
-  };
+  //   const handleLinkClick = (line: any) => {
+  //     const newLines = lines.filter((s) => s.id !== line.id);
+  //     setLines(newLines);
+  //   };
   // type と color のマッピング
   const typeColorMap: { [key: string]: string } = {
     冷水: "#00BFFF", // type1 の場合、赤
@@ -313,10 +313,10 @@ const Canvas8 = () => {
 
     updateTypes();
   }, []); // 初回レンダリング時のみ実行
-  interface Point {
-    x: number;
-    y: number;
-  }
+  //   interface Point {
+  //     x: number;
+  //     y: number;
+  //   }
   const [linesWithPoints, setLinesWithPoints] = useState<LineWithPoints[]>([]);
   interface LineWithPoints extends Line {
     points: number[];
