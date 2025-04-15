@@ -1,6 +1,6 @@
 import { Stage, Layer, Rect, Group, Text, Arrow } from "react-konva";
 import { useEffect, useRef, useState } from "react";
-import { Line } from "konva/lib/shapes/Line";
+
 import Header from "./Header";
 
 type Shape = {
@@ -259,7 +259,7 @@ const Canvas2 = () => {
       y: pointer.y - mousePointTo.y * limitedScale,
     });
   };
-  const [selectedShape, setSelectedShape] = useState<{
+  const [_selectedShape, setSelectedShape] = useState<{
     id: string;
     x: number;
     y: number;
@@ -275,9 +275,9 @@ const Canvas2 = () => {
     setLines(newLines);
   };
 
-  const handleClose = () => {
-    setSelectedShape(null);
-  };
+  // const handleClose = () => {
+  //   setSelectedShape(null);
+  // };
   useEffect(() => {
     setShapes(generateShapes());
   }, [leftCount, middleCount, rightCount, anotherCount, excetraCount]);

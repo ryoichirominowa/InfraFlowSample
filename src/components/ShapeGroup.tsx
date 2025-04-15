@@ -3,7 +3,6 @@ import React from "react";
 import { Group, Rect, Text } from "react-konva";
 import { ShapeData } from "../types"; // types.ts からインポート
 import { KonvaEventObject } from "konva/lib/Node";
-import Konva from "konva"; // Konvaの型を取得するためにインポート
 
 interface ShapeGroupProps {
   shape: ShapeData;
@@ -18,7 +17,7 @@ interface ShapeGroupProps {
 const ShapeGroup: React.FC<ShapeGroupProps> = ({
   shape,
   isSelected,
-  gridSize, // 必要であれば onDragEnd 内で使う
+
   onDragMove,
   onDragEnd,
   onClick,

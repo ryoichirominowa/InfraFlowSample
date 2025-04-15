@@ -180,20 +180,20 @@ const Canvas4 = () => {
   useEffect(() => {
     setShapes(generateShapes());
   }, [leftCount, middleCount, rightCount, anotherCount, excetraCount]);
-  const [isPropertiesVisible, setIsPropertiesVisible] = useState(false);
+  const [_isPropertiesVisible, _setIsPropertiesVisible] = useState(false);
 
-  const handleShowProperties = () => {
-    setIsPropertiesVisible(true);
-  };
+  // const handleShowProperties = () => {
+  //   setIsPropertiesVisible(true);
+  // };
 
-  const handleCloseProperties = () => {
-    setIsPropertiesVisible(false);
-  };
+  // const handleCloseProperties = () => {
+  //   setIsPropertiesVisible(false);
+  // };
 
-  const handleClose = () => {
-    // 閉じるボタンの処理
-    setSelectedShape(null);
-  };
+  // const handleClose = () => {
+  //   // 閉じるボタンの処理
+  //   setSelectedShape(null);
+  // };
   // Textをクリックした時の処理
   const handleTextClick = (shapeId: string) => {
     if (selectedShape) {
@@ -353,7 +353,7 @@ const Canvas4 = () => {
                       // 形状が選ばれており、リンクされていないものを返す
                       return shapeIdPrefix > selectedIdPrefix && !isShapeLinked;
                     })
-                    .map((shape, filteredIndex) => (
+                    .map((shape) => (
                       <p
                         key={shape.id}
                         className="text-sm text-gray-600 cursor-pointer p-4 border-2 border-gray-300 rounded-lg shadow-lg hover:bg-gray-200 transform transition-all duration-200 ease-in-out hover:scale-105 w-full"

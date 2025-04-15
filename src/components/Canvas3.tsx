@@ -252,7 +252,7 @@ const Canvas3 = () => {
       y: pointer.y - mousePointTo.y * limitedScale,
     });
   };
-  const [selectedShape, setSelectedShape] = useState<{
+  const [_selectedShape, setSelectedShape] = useState<{
     id: string;
     x: number;
     y: number;
@@ -268,9 +268,9 @@ const Canvas3 = () => {
     setLines(newLines);
   };
 
-  const handleClose = () => {
-    setSelectedShape(null);
-  };
+  // const handleClose = () => {
+  //   setSelectedShape(null);
+  // };
   useEffect(() => {
     setShapes(generateShapes());
   }, [leftCount, middleCount, rightCount, anotherCount, excetraCount]);
