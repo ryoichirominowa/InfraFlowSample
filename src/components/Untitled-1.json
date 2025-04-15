@@ -1,0 +1,54 @@
+{
+  "signalListParent": [
+    {
+      "signalTargetVehicles": "Emergency",
+      "signalList": [
+        {
+          "fireDepartmentName": "Tokyo Fire Department",
+          "availableVehicles": 10,
+          "signalTargetVehicles": 5,
+          "teamFormationVehicles": 3,
+          "restrictedVehicles": 2,
+          "exclusiveVehicles": 1,
+          "nonFormationTargetVehicles": 4,
+          "status": "active"
+        },
+        {
+          "fireDepartmentName": "Osaka Fire Department",
+          "availableVehicles": 8,
+          "signalTargetVehicles": 4,
+          "teamFormationVehicles": 2,
+          "restrictedVehicles": 1,
+          "exclusiveVehicles": 2,
+          "nonFormationTargetVehicles": 3,
+          "status": "inactive"
+        }
+      ]
+    },
+    {
+      "signalTargetVehicles": "Emergency",
+      "signalList": [
+        {
+          "fireDepartmentName": "Tokyo Fire Department",
+          "availableVehicles": 10,
+          "signalTargetVehicles": 5,
+          "teamFormationVehicles": 3,
+          "restrictedVehicles": 2,
+          "exclusiveVehicles": 1,
+          "nonFormationTargetVehicles": 4,
+          "status": "active"
+        },
+        {
+          "fireDepartmentName": "Osaka Fire Department",
+          "availableVehicles": 8,
+          "signalTargetVehicles": 4,
+          "teamFormationVehicles": 2,
+          "restrictedVehicles": 1,
+          "exclusiveVehicles": 2,
+          "nonFormationTargetVehicles": 3,
+          "status": "inactive"
+        }
+      ]
+    }
+  ]
+}
