@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import Canvas from "./components/Canvas";
 import Canvas2 from "./components/Canvas2";
 import Canvas3 from "./components/Canvas3";
