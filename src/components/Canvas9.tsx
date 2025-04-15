@@ -507,7 +507,7 @@ const Canvas9 = () => {
                 {/* Lines (Arrows) */}
                 {lines
                   .filter((line) => leftLabels.includes(line.type))
-                  .map((line, i) => {
+                  .map((line) => {
                     const fromShape = shapes.find((s) => s.id === line.from);
                     const toShape = shapes.find((s) => s.id === line.to);
                     if (!fromShape || !toShape) return null;
@@ -574,7 +574,7 @@ const Canvas9 = () => {
                         x={shape.x}
                         y={shape.y}
                         draggable // Shapeは常にドラッグ可能
-                        onDragStart={(e) => {
+                        onDragStart={() => {
                           // Shapeドラッグ開始時はStageドラッグを無効化
                           setIsDraggingStage(false);
                           // 必要であればドラッグ開始時に選択状態にする
