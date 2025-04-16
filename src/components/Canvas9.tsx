@@ -114,11 +114,11 @@ const Canvas9 = () => {
       setSelectedShape(null);
       // Stageのドラッグを開始
       setIsDraggingStage(true);
-      // stageRef.current.draggable(true); // draggable属性で制御するなら不要
+      stageRef.current.draggable(true); // draggable属性で制御するなら不要
     } else {
       // Shapeなどがクリックされた場合はStageのドラッグを無効に
       setIsDraggingStage(false);
-      // stageRef.current.draggable(false); // draggable属性で制御するなら不要
+      stageRef.current.draggable(false); // draggable属性で制御するなら不要
     }
   };
 
@@ -374,6 +374,17 @@ const Canvas9 = () => {
   // --- ▼▼▼ JSX 描画部分の変更 ▼▼▼ ---
   const FADED_OPACITY = 0.3; // 薄く表示する際の不透明度
 
+  const handleExport = () => {
+    const uri = stageRef.current.toDataURL();
+
+    // ダウンロード用リンクを作成
+    const link = document.createElement("a");
+    link.download = "canvas-export.png";
+    link.href = uri;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   return (
     <div className="flex flex-col h-screen ">
       <Header />
@@ -387,6 +398,12 @@ const Canvas9 = () => {
               selectedValues={leftLabels}
               setSelectedValues={setLeftLabels}
             />
+            <button
+              onClick={handleExport}
+              className="mb-2 px-4 py-1 bg-blue-500 text-white rounded"
+            >
+              エクスポート
+            </button>
           </div>
         </div>
         {/* メインエリア */}
@@ -446,18 +463,7 @@ const Canvas9 = () => {
                 {selectedShape ? (
                   shapes
                     .filter((shape) => {
-                      const selectedIdPrefix = parseInt(
-                        selectedShape.id.split("-")[0]
-                      );
-                      const shapeIdPrefix = parseInt(shape.id.split("-")[0]);
-                      const isShapeLinked = lines.some(
-                        (line) =>
-                          (line.from === selectedShape.id &&
-                            line.to === shape.id) ||
-                          (line.from === shape.id &&
-                            line.to === selectedShape.id)
-                      );
-                      return shapeIdPrefix > selectedIdPrefix && !isShapeLinked;
+                      return selectedShape.x < shape.x;
                     })
                     .map((shape) => (
                       <p
