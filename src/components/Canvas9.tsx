@@ -288,27 +288,26 @@ const Canvas9 = () => {
       handleUpdateType("0-A1", "冷水");
       handleUpdateType("0-A2", "温水");
       handleUpdateType("0-A3", "電気");
-      handleUpdateType("0-A4", "蒸気");
+
       handleUpdateType("1-B1", "蒸気");
       handleUpdateType("1-B1", "冷水");
       handleUpdateType("1-B2", "電気");
       handleUpdateType("1-B3", "冷水");
       handleUpdateType("1-B3", "蒸気");
-      handleUpdateType("1-B4", "温水");
+
       handleUpdateType("2-C1", "冷水");
       handleUpdateType("2-C2", "温水");
       handleUpdateType("2-C3", "電気");
-      handleUpdateType("2-C4", "蒸気");
+
       handleUpdateType("3-D1", "冷水");
       handleUpdateType("3-D1", "蒸気");
       handleUpdateType("3-D2", "電気");
       handleUpdateType("3-D3", "温水");
       handleUpdateType("3-D3", "蒸気");
-      handleUpdateType("3-D4", "蒸気");
+
       handleUpdateType("4-E1", "蒸気");
       handleUpdateType("4-E2", "冷水");
       handleUpdateType("4-E3", "温水");
-      handleUpdateType("4-E4", "電気");
     };
     updateTypes();
   }, []);
