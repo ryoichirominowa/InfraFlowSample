@@ -369,6 +369,8 @@ const Canvas9 = () => {
       endY,
     ];
   };
+  const [isAccordionOpen, setIsAccordionOpen] = useState(false);
+  const [isPropertyOpen, setIsPropertyOpen] = useState(false);
 
   // --- ▼▼▼ JSX 描画部分の変更 ▼▼▼ ---
   const FADED_OPACITY = 0.3; // 薄く表示する際の不透明度
@@ -408,87 +410,86 @@ const Canvas9 = () => {
         {/* メインエリア */}
         <div className="flex-1 flex flex-row justify-center items-center w-full">
           {/* 左パネル（プロパティ、リンク追加） */}
-          <div className="w-[20%] h-[90%] border-2 border-black flex flex-col justify-between overflow-hidden ">
-            {/* プロパティ表示 */}
-            <div className="h-1/2 flex justify-start items-start border-b border-black p-4 bg-gray-100 overflow-y-auto">
-              {/* ... プロパティ表示部分は変更なし ... */}
-              <div className="w-full">
-                {" "}
-                <h1 className="text-xl font-semibold text-gray-800 mb-4">
-                  {" "}
-                  プロパティ{" "}
-                </h1>{" "}
-                {selectedShape && (
-                  <div className="bg-white p-4 rounded-lg shadow-md">
-                    {" "}
-                    <p className="text-sm text-gray-600 mb-3">
-                      {" "}
-                      <span className="font-semibold">ID:</span>{" "}
-                      {selectedShape.id}{" "}
-                    </p>{" "}
-                    <p className="text-sm text-gray-600 mb-3">
-                      {" "}
-                      <span className="font-semibold">ラベル:</span>{" "}
-                      {selectedShape.label}{" "}
-                    </p>{" "}
-                    <p className="text-sm text-gray-600 mb-3">
-                      {" "}
-                      <span className="font-semibold">x:</span>{" "}
-                      {selectedShape.x}{" "}
-                    </p>{" "}
-                    <p className="text-sm text-gray-600 mb-3">
-                      {" "}
-                      <span className="font-semibold">Y:</span>{" "}
-                      {selectedShape.y}{" "}
-                    </p>{" "}
-                    <p className="text-sm text-gray-600 mb-3">
-                      {" "}
-                      <span className="font-semibold">グループ:</span>{" "}
-                      {selectedShape.type.join("、")}{" "}
-                    </p>{" "}
-                  </div>
-                )}{" "}
-              </div>
-            </div>
-            {/* リンク追加 */}
-            <div className="h-1/2 flex flex-col justify-start items-start border-b border-black p-6 bg-gray-100">
-              {/* ... リンク追加部分は変更なし ... */}
-              <h1 className="text-2xl font-semibold text-gray-800 mb-6">
-                {" "}
-                リンクを追加{" "}
-              </h1>{" "}
-              <div className="overflow-x-auto overflow-y-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-6 justify-items-center items-center p-4 w-full">
-                {" "}
-                {selectedShape ? (
-                  shapes
-                    .filter((shape) => {
-                      return selectedShape.x < shape.x;
-                    })
-                    .map((shape) => (
-                      <p
-                        key={shape.id}
-                        className="text-sm text-gray-600 cursor-pointer p-4 border-2 border-gray-300 rounded-lg shadow-lg hover:bg-gray-200 transform transition-all duration-200 ease-in-out hover:scale-105 w-full"
-                        onClick={() =>
-                          handleTextClick(
-                            selectedShape.id,
-                            shape.id,
-                            leftLabels
-                          )
-                        }
-                      >
-                        {" "}
-                        <span className="font-semibold">
-                          {shape.label}
-                        </span>{" "}
+          <div className="w-[20%] h-[90%] border-2 border-black flex flex-col overflow-hidden">
+            {/* アコーディオン：プロパティ */}
+            <div className="border-b border-black">
+              <button
+                className="w-full text-left p-4 bg-gray-100 text-xl font-semibold text-gray-800 flex justify-between items-center"
+                onClick={() => setIsPropertyOpen(!isPropertyOpen)}
+              >
+                プロパティ
+                <span className="text-lg">{isPropertyOpen ? "▲" : "▼"}</span>
+              </button>
+
+              {isPropertyOpen && (
+                <div className="w-full max-h-60 overflow-y-auto p-4 bg-gray-100">
+                  {selectedShape && (
+                    <div className="bg-white p-4 rounded-lg shadow-md">
+                      <p className="text-sm text-gray-600 mb-3">
+                        <span className="font-semibold">ID:</span>{" "}
+                        {selectedShape.id}
                       </p>
-                    ))
-                ) : (
-                  <p className="text-sm text-gray-500">
-                    {" "}
-                    選択された形状がありません。{" "}
-                  </p>
-                )}{" "}
-              </div>
+                      <p className="text-sm text-gray-600 mb-3">
+                        <span className="font-semibold">ラベル:</span>{" "}
+                        {selectedShape.label}
+                      </p>
+                      <p className="text-sm text-gray-600 mb-3">
+                        <span className="font-semibold">x:</span>{" "}
+                        {selectedShape.x}
+                      </p>
+                      <p className="text-sm text-gray-600 mb-3">
+                        <span className="font-semibold">y:</span>{" "}
+                        {selectedShape.y}
+                      </p>
+                      <p className="text-sm text-gray-600 mb-3">
+                        <span className="font-semibold">グループ:</span>{" "}
+                        {selectedShape.type.join("、")}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* アコーディオン：リンク追加 */}
+            <div className="border-t border-black flex-1 overflow-hidden">
+              <button
+                className="w-full text-left p-4 bg-gray-100 text-xl font-semibold text-gray-800 flex justify-between items-center"
+                onClick={() => setIsAccordionOpen(!isAccordionOpen)}
+              >
+                リンクを追加
+                <span className="text-lg">{isAccordionOpen ? "▲" : "▼"}</span>
+              </button>
+
+              {isAccordionOpen && (
+                <div className="overflow-y-auto p-4 h-full bg-gray-100">
+                  {selectedShape ? (
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                      {shapes
+                        .filter((shape) => selectedShape.x < shape.x)
+                        .map((shape) => (
+                          <p
+                            key={shape.id}
+                            className="text-sm text-gray-600 cursor-pointer p-4 border-2 border-gray-300 rounded-lg shadow-lg hover:bg-gray-200 transform transition-all duration-200 ease-in-out hover:scale-105"
+                            onClick={() =>
+                              handleTextClick(
+                                selectedShape.id,
+                                shape.id,
+                                leftLabels
+                              )
+                            }
+                          >
+                            <span className="font-semibold">{shape.label}</span>
+                          </p>
+                        ))}
+                    </div>
+                  ) : (
+                    <p className="text-sm text-gray-500">
+                      選択された形状がありません。
+                    </p>
+                  )}
+                </div>
+              )}
             </div>
           </div>
 
